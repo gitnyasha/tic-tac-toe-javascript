@@ -11,7 +11,7 @@
       <div class="container-in">
         <div class="table-container">
           <!-- <p>Player <span id="player">X</span> your turn</p> -->
-          <table align="center">
+          <table>
             <tr>
               <td><div class="box">0</div></td>
               <td><div class="box">1</div></td>
@@ -28,12 +28,16 @@
               <td><div class="box">8</div></td>
             </tr>
           </table>
-
+          <form action="">
+            <input type="text" id="player-1" placeholder="player 1" />
+            <input type="text" id="player-2" placeholder="player 2" />
+            <button type="button" onclick="#">create</button>
+          </form>
           <h2 id="message">Player <span id="winner"></span> Wins</h2>
           <button id="reset">Reset</button>
         </div>
       </div>
     </div>
-    <script src="./app.js" />
+    <script src="./app.js"></script>
   </body>
 </html>
