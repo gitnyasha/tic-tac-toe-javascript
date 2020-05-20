@@ -1,8 +1,6 @@
 # Library
 
-> A basic tic tac toe.
-
-The porpuse of this project was to build an interface for a library using an array of objects as storage.
+> A basic tic tac toe game build with html css and javascript using modules.
 
 ## Built With
 
@@ -12,7 +10,7 @@ The porpuse of this project was to build an interface for a library using an arr
 
 ## Live Demo
 
-[Live]()
+[Live](https://hungry-payne-9abdca.netlify.app/)
 
 ## Getting Started
 
@@ -22,7 +20,7 @@ To get a local copy up and running follow these simple example steps.
 
 Download the project
 
-    $ git clone
+    $ git clone https://github.com/gitnyasha/tic-tac-toe-javascript.git
 
 ### Usage
 
@@ -33,7 +31,7 @@ Download the project
 
 👤 \*\*\*\*
 
-- Github: [](https://github.com/)
+- Github: [konyan](https://github.com/konyan)
 - Twitter: [](https://twitter.com/)
 - Linkedin: [](https://www.linkedin.com/)
 
@@ -46,10 +44,6 @@ Download the project
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Thanks to [Twitter Bootstrap Project](https://getbootstrap.com/2.0.2/)
 
 ## 📝 License
 

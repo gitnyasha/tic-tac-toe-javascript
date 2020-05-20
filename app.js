@@ -83,7 +83,7 @@ var gameBoardController = (function () {
               board[4].innerHTML == board[7].innerHTML &&
               board[1].innerHTML.trim() != ""
             ) {
-              showWinner();
+              showWinner(game);
             } else if (
               board[2].innerHTML == board[5].innerHTML &&
               board[5].innerHTML == board[8].innerHTML &&
