@@ -45,13 +45,11 @@ var gameBoardController = (function () {
         board[i].addEventListener("click", function () {
           if (board[i].innerHTML.trim() == "" && game.status == "Running") {
             board[i].innerHTML = game.currentPlay.symbol;
-
             if (game.currentPlay.symbol == "X") {
               game.currentPlay = game.oPlayer;
             } else {
               game.currentPlay = game.xPlayer;
             }
-            console.log("CURRENT Play", game.currentPlay);
             document.getElementById("player").innerHTML = game.currentPlay.name;
 
             if (
@@ -104,7 +102,6 @@ var gameBoardController = (function () {
               showWinner(game);
             } else {
               game.playCount++;
-              console.log("HAHAHAH", game.playCount);
               if (game.playCount == 9) {
                 document.getElementById("reset").classList = "";
               }
@@ -118,7 +115,7 @@ var gameBoardController = (function () {
   };
 
   var showWinner = function (game) {
-    document.getElementById("winner").innerHTML = game.currentPlay.name;
+    document.getElementById("winner").innerHTML = "with 3 straight symbols";
     document.getElementById("message").style.display = "block";
     document.getElementById("game-status").innerHTML = "status = game over";
     game.status = "Game Over";
