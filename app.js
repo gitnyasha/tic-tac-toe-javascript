@@ -25,14 +25,7 @@ const playerController = (() => {
   };
 })();
 
-var displayController = (function () {
-  //game logic
-
-  var placeMark = function (player) {};
-  return {};
-})();
-
-var gameBoard = (function () {
+var gameBoardController = (function () {
   //display the baord
   const winningCombination = [
     [0, 1, 2],
@@ -44,12 +37,79 @@ var gameBoard = (function () {
     [0, 4, 8],
     [2, 4, 6],
   ];
+
+  var boardWinner = function () {
+    const board = document.getElementsByClassName("box");
+
+    for (let i = 0; i < board.length; i++) {
+      board[i].addEventListener("click", function () {
+        if (board[i].innerHTML.trim() == "" && gamePlaying == "Running") {
+          board[i].innerHTML = currentPlayer;
+          currentPlayer = currentPlayer == "x" ? "o" : "x";
+          document.getElementById("player").innerHTML = currentPlayer;
+          if (
+            board[0].innerHTML == board[1].innerHTML &&
+            board[1].innerHTML == board[2].innerHTML &&
+            board[0].innerHTML.trim() != ""
+          ) {
+            showWinner();
+          } else if (
+            board[3].innerHTML == board[4].innerHTML &&
+            board[4].innerHTML == board[5].innerHTML &&
+            board[3].innerHTML.trim() != ""
+          ) {
+            showWinner();
+          } else if (
+            board[6].innerHTML == board[7].innerHTML &&
+            board[7].innerHTML == board[8].innerHTML &&
+            board[6].innerHTML.trim() != ""
+          ) {
+            showWinner();
+          } else if (
+            board[0].innerHTML == board[3].innerHTML &&
+            board[3].innerHTML == board[6].innerHTML &&
+            board[0].innerHTML.trim() != ""
+          ) {
+            showWinner();
+          } else if (
+            board[1].innerHTML == board[4].innerHTML &&
+            board[4].innerHTML == board[7].innerHTML &&
+            board[1].innerHTML.trim() != ""
+          ) {
+            showWinner();
+          } else if (
+            board[2].innerHTML == board[5].innerHTML &&
+            board[5].innerHTML == board[8].innerHTML &&
+            board[2].innerHTML.trim() != ""
+          ) {
+            showWinner();
+          } else if (
+            board[0].innerHTML == board[4].innerHTML &&
+            board[4].innerHTML == board[8].innerHTML &&
+            board[0].innerHTML.trim() != ""
+          ) {
+            showWinner();
+          } else if (
+            board[2].innerHTML == board[4].innerHTML &&
+            board[4].innerHTML == board[6].innerHTML &&
+            board[2].innerHTML.trim() != ""
+          ) {
+            showWinner();
+          }
+        }
+      });
+    }
+  };
+
+  return {
+    showBoard: function () {
+      boardWinner();
+    },
+  };
 })();
 
-var globalController = (function (playerController) {
+var globalController = (function (playerController, gameBoardController) {
   //controller that links other modules
-
-  document.querySelector(".box");
 
   return {
     init: function () {
@@ -58,105 +118,34 @@ var globalController = (function (playerController) {
       console.log(play1, play2);
     },
   };
-})(playerController);
+})(playerController, gameBoardController);
 
 globalController.init();
 
-// // var displayController = (function () {})();
+// var globalController = (function (gameBoard, displayController) {
+//   //controller that links other modules
+// })(gameBoard, displayController);
 
-// var gameBoard = (function () {
-//   const board = document.getElementsByClassName("box");
+let currentPlayer = "x";
+let gamePlaying = "Running";
+const board = document.querySelectorAll(".box");
 
-//   for (let i = 0; i < board.length; i++) {
-//     board[i].addEventListener("click", function () {
-//       if (board[i].innerHTML.trim() == "" && gamePlaying == "Running") {
-//         board[i].innerHTML = currentPlayer;
-//         currentPlayer = currentPlayer == "x" ? "o" : "x";
-//         document.getElementById("player").innerHTML = currentPlayer;
-//         if (
-//           board[0].innerHTML == board[1].innerHTML &&
-//           board[1].innerHTML == board[2].innerHTML &&
-//           board[0].innerHTML.trim() != ""
-//         ) {
-//           showWinner();
-//         } else if (
-//           board[3].innerHTML == board[4].innerHTML &&
-//           board[4].innerHTML == board[5].innerHTML &&
-//           board[3].innerHTML.trim() != ""
-//         ) {
-//           showWinner();
-//         } else if (
-//           board[6].innerHTML == board[7].innerHTML &&
-//           board[7].innerHTML == board[8].innerHTML &&
-//           board[6].innerHTML.trim() != ""
-//         ) {
-//           showWinner();
-//         } else if (
-//           board[0].innerHTML == board[3].innerHTML &&
-//           board[3].innerHTML == board[6].innerHTML &&
-//           board[0].innerHTML.trim() != ""
-//         ) {
-//           showWinner();
-//         } else if (
-//           board[1].innerHTML == board[4].innerHTML &&
-//           board[4].innerHTML == board[7].innerHTML &&
-//           board[1].innerHTML.trim() != ""
-//         ) {
-//           showWinner();
-//         } else if (
-//           board[2].innerHTML == board[5].innerHTML &&
-//           board[5].innerHTML == board[8].innerHTML &&
-//           board[2].innerHTML.trim() != ""
-//         ) {
-//           showWinner();
-//         } else if (
-//           board[0].innerHTML == board[4].innerHTML &&
-//           board[4].innerHTML == board[8].innerHTML &&
-//           board[0].innerHTML.trim() != ""
-//         ) {
-//           showWinner();
-//         } else if (
-//           board[2].innerHTML == board[4].innerHTML &&
-//           board[4].innerHTML == board[6].innerHTML &&
-//           board[2].innerHTML.trim() != ""
-//         ) {
-//           showWinner();
-//         }
-//       }
-//     });
-//   }
+document.getElementById("reset").addEventListener("click", function () {
+  for (let i = 0; i < board.length; i++) {
+    board[i].innerHTML = "";
+    board[i].style.backgroundColor = "#dee9ec";
+    board[i].style.color = "black";
+  }
+  currentPlayer = "x";
+  document.getElementById("message").style.display = "none";
+  document.getElementById("player").innerHTML = "X";
+  gamePlaying = "Running";
+});
 
-//   return {
-//     showBoard: function () {
-//       board;
-//     },
-//   };
-// })();
-
-// // var globalController = (function (gameBoard, displayController) {
-// //   //controller that links other modules
-// // })(gameBoard, displayController);
-
-// let currentPlayer = "x";
-
-// let gamePlaying = "Running";
-
-// document.getElementById("reset").addEventListener("click", function () {
-//   for (let i = 0; i < board.length; i++) {
-//     board[i].innerHTML = "";
-//     board[i].style.backgroundColor = "#dee9ec";
-//     board[i].style.color = "black";
-//   }
-//   currentPlayer = "x";
-//   document.getElementById("message").style.display = "none";
-//   document.getElementById("player").innerHTML = "X";
-//   gamePlaying = "Running";
-// });
-
-// //displays the winner
-// function showWinner() {
-//   document.getElementById("winner").innerHTML =
-//     currentPlayer == "x" ? "O" : "X";
-//   document.getElementById("message").style.display = "block";
-//   gamePlaying = "Game Over";
-// }
+//displays the winner
+function showWinner() {
+  document.getElementById("winner").innerHTML =
+    currentPlayer == "x" ? "O" : "X";
+  document.getElementById("message").style.display = "block";
+  gamePlaying = "Game Over";
+}
