@@ -5,11 +5,15 @@
 
 .container-in {
   width: 97%;
-  margin: 0 auto;
+  margin: 0px auto;
 }
 .table-container {
-  margin: 10 auto;
+  /* margin: 10px auto; */
   text-align: center;
+}
+
+.table-container table {
+  display: inline-block;
 }
 
 .box {
@@ -49,4 +53,8 @@
 
 .table-container button:focus {
   outline: none;
+}
+
+.hide {
+  display: none;
 }
