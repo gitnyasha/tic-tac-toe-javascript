@@ -1,4 +1,3 @@
-//konyan,[0,1],0,X
 const playerController = (() => {
   const Player = function (name, symbol) {
     this.name = name;
@@ -15,7 +14,7 @@ const playerController = (() => {
       this.moves.push(move);
     },
 
-    addWinener: function (win) {
+    addWinener: function () {
       this.winner = true;
     },
 
@@ -26,8 +25,6 @@ const playerController = (() => {
 })();
 
 const gameBoardController = (function () {
-  //display the baord
-
   const GameBoard = function (xPlayer, oPlayer) {
     this.xPlayer = xPlayer;
     this.oPlayer = oPlayer;
@@ -109,8 +106,6 @@ const gameBoardController = (function () {
             }
           }
         });
-      } else {
-        console.log("PlAY");
       }
     }
   };
