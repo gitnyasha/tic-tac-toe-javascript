@@ -107,6 +107,7 @@ var gameBoardController = (function () {
   var showWinner = function (game) {
     document.getElementById("winner").innerHTML = game.currentPlay.name;
     document.getElementById("message").style.display = "block";
+    document.getElementById("game-status").innerHTML = "status = game over";
     game.status = "Game Over";
     game.winner = game.currentPlay;
   };
@@ -160,6 +161,7 @@ var globalController = (function (playerController, gameBoardController) {
       document.querySelector(".table__header").classList = "table__header hide";
       document.getElementById("table").classList = "hide";
       document.getElementById("reset").classList = "hide";
+      document.getElementById("message").style.display = "none";
 
       //HIDE FORM
       document.querySelector(".game-create").classList = "game-create";
