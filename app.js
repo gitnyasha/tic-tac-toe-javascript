@@ -27,6 +27,7 @@ const playerController = (() => {
 
 const gameBoardController = (function () {
   //display the baord
+
   const GameBoard = function (xPlayer, oPlayer) {
     this.xPlayer = xPlayer;
     this.oPlayer = oPlayer;
@@ -55,49 +56,49 @@ const gameBoardController = (function () {
             if (
               board[0].innerHTML === board[1].innerHTML &&
               board[1].innerHTML === board[2].innerHTML &&
-              board[0].innerHTML.trim() != ""
+              board[0].innerHTML.trim() !== ""
             ) {
               showWinner(game);
             } else if (
               board[3].innerHTML === board[4].innerHTML &&
               board[4].innerHTML === board[5].innerHTML &&
-              board[3].innerHTML.trim() != ""
+              board[3].innerHTML.trim() !== ""
             ) {
               showWinner(game);
             } else if (
               board[6].innerHTML === board[7].innerHTML &&
               board[7].innerHTML === board[8].innerHTML &&
-              board[6].innerHTML.trim() != ""
+              board[6].innerHTML.trim() !== ""
             ) {
               showWinner(game);
             } else if (
               board[0].innerHTML === board[3].innerHTML &&
               board[3].innerHTML === board[6].innerHTML &&
-              board[0].innerHTML.trim() != ""
+              board[0].innerHTML.trim() !== ""
             ) {
               showWinner(game);
             } else if (
               board[1].innerHTML === board[4].innerHTML &&
               board[4].innerHTML === board[7].innerHTML &&
-              board[1].innerHTML.trim() != ""
+              board[1].innerHTML.trim() !== ""
             ) {
               showWinner(game);
             } else if (
               board[2].innerHTML === board[5].innerHTML &&
               board[5].innerHTML === board[8].innerHTML &&
-              board[2].innerHTML.trim() != ""
+              board[2].innerHTML.trim() !== ""
             ) {
               showWinner(game);
             } else if (
               board[0].innerHTML === board[4].innerHTML &&
               board[4].innerHTML === board[8].innerHTML &&
-              board[0].innerHTML.trim() != ""
+              board[0].innerHTML.trim() !== ""
             ) {
               showWinner(game);
             } else if (
               board[2].innerHTML === board[4].innerHTML &&
               board[4].innerHTML === board[6].innerHTML &&
-              board[2].innerHTML.trim() != ""
+              board[2].innerHTML.trim() !== ""
             ) {
               showWinner(game);
             } else {
@@ -145,10 +146,12 @@ const globalController = (function (playerController, gameBoardController) {
     const play2 = playerController.addPlayer(player2Name, "O");
 
     //SHOW TABLE
+
     document.querySelector(".table__header").classList = "table__header";
     document.getElementById("table").classList = "";
 
     //HIDE FORM
+
     document.querySelector(".game-create").classList = "game-create hide";
 
     document.getElementById("player").innerHTML = play1.name;
@@ -168,12 +171,14 @@ const globalController = (function (playerController, gameBoardController) {
         board[i].style.color = "black";
       }
       //HIDE TABLE
+
       document.querySelector(".table__header").classList = "table__header hide";
       document.getElementById("table").classList = "hide";
       document.getElementById("reset").classList = "hide";
       document.getElementById("message").style.display = "none";
 
       //HIDE FORM
+
       document.querySelector(".game-create").classList = "game-create";
     });
 
