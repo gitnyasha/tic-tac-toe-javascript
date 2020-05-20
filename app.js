@@ -132,7 +132,14 @@ var globalController = (function (playerController, gameBoardController) {
     var play1 = playerController.addPlayer(player1Name, "X");
     var play2 = playerController.addPlayer(player2Name, "O");
 
+    //SHOW TABLE
     document.querySelector(".table__header").classList = "table__header";
+    document.getElementById("table").classList = "";
+    document.getElementById("reset").classList = "";
+
+    //HIDE FORM
+    document.querySelector(".game-create").classList = "game-create hide";
+
     document.getElementById("player").innerHTML = play1.name;
     document.getElementById("player").value = play1.symbol;
 
@@ -142,16 +149,20 @@ var globalController = (function (playerController, gameBoardController) {
   };
 
   var setupEventListener = function () {
+    const board = document.getElementsByClassName("box");
     document.getElementById("reset").addEventListener("click", function () {
       for (let i = 0; i < board.length; i++) {
         board[i].innerHTML = "";
         board[i].style.backgroundColor = "#dee9ec";
         board[i].style.color = "black";
       }
-      currentPlayer = "x";
-      document.getElementById("message").style.display = "none";
-      document.getElementById("player").innerHTML = "X";
-      gamePlaying = "Running";
+      //HIDE TABLE
+      document.querySelector(".table__header").classList = "table__header hide";
+      document.getElementById("table").classList = "hide";
+      document.getElementById("reset").classList = "hide";
+
+      //HIDE FORM
+      document.querySelector(".game-create").classList = "game-create";
     });
 
     document

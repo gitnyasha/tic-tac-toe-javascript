@@ -14,7 +14,7 @@
             <p>Player : <span id="player">()</span>; Now your turn !</p>
             <h4 id="game-status">status = running</h4>
           </div>
-          <table>
+          <table class="hide" id="table">
             <tr>
               <td><div class="box"></div></td>
               <td><div class="box"></div></td>
@@ -37,7 +37,9 @@
             <button type="submit" class="btn btn-create">Game Start</button>
           </form>
           <h2 id="message">Player <span id="winner"></span> Wins</h2>
-          <button id="reset">Reset</button>
+          <div>
+            <button id="reset" class="hide">Reset</button>
+          </div>
         </div>
       </div>
     </div>
