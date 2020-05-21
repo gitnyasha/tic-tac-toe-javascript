@@ -43,11 +43,8 @@ const gameBoardController = (function () {
         board[i].addEventListener("click", function () {
           if (board[i].innerHTML.trim() === "" && game.status === "Running") {
             board[i].innerHTML = game.currentPlay.symbol;
-            if (game.currentPlay.symbol === "X") {
-              game.currentPlay = game.oPlayer;
-            } else {
-              game.currentPlay = game.xPlayer;
-            }
+            game.currentPlay =
+              game.currentPlay.symbol === "X" ? game.oPlayer : game.xPlayer;
             document.getElementById("player").innerHTML = game.currentPlay.name;
 
             if (
@@ -111,11 +108,14 @@ const gameBoardController = (function () {
   };
 
   const showWinner = function (game) {
-    document.getElementById("winner").innerHTML = "with 3 straight symbols";
+    document.getElementById("winner").innerHTML =
+      game.currentPlay.name === game.oPlayer.name
+        ? game.xPlayer.name
+        : game.oPlayer.name;
+
     document.getElementById("message").style.display = "block";
     document.getElementById("game-status").innerHTML = "status = game over";
     game.status = "Game Over";
-    game.winner = game.currentPlay;
     document.getElementById("reset").classList = "";
   };
 
