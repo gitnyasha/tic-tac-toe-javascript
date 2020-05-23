@@ -10,21 +10,20 @@
   },
   "extends": ["airbnb-base"],
   "rules": {
-    "generators": "never",
     "no-shadow": "off",
     "no-param-reassign": "off",
     "eol-last": "off",
     "arrow-parens": "off",
-    "quotes": [2, "double", { "avoidEscape": true }],
-    "operator-linebreak": [
-      "error",
-      "after",
+    "import/no-unresolved": "off",
+    "quotes": [
+      2,
+      "double",
       {
-        "overrides": {
-          ":": "before"
-        }
+        "avoidEscape": true
       }
-    ],
-    "object-shorthand": ["always"]
+    ]
+  },
+  "settings": {
+    "import/resolver": "webpack"
   }
 }
