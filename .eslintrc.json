@@ -13,17 +13,6 @@
     "no-shadow": "off",
     "no-param-reassign": "off",
     "eol-last": "off",
-    "arrow-parens": "off",
-    "import/no-unresolved": "off",
-    "quotes": [
-      2,
-      "double",
-      {
-        "avoidEscape": true
-      }
-    ]
-  },
-  "settings": {
-    "import/resolver": "webpack"
+    "arrow-parens": "off"
   }
 }
