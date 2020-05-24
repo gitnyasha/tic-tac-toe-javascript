@@ -46,79 +46,6 @@ const gameBoardController = (function (playerController) {
     document.getElementById("reset").classList = "";
   };
 
-  const boardWinner = function (game) {
-    const board = document.getElementsByClassName("box");
-    document.getElementById("game-status").innerHTML = "status = running";
-
-    for (let i = 0; i < board.length; i += 1) {
-      if (game.playCount < 9) {
-        board[i].addEventListener("click", () => {
-          if (board[i].innerHTML.trim() === "" && game.status === "Running") {
-            board[i].innerHTML = game.currentPlay.symbol;
-            game.currentPlay =
-              game.currentPlay.symbol === "X" ? game.oPlayer : game.xPlayer;
-            document.getElementById("player").innerHTML = game.currentPlay.name;
-
-            if (
-              board[0].innerHTML === board[1].innerHTML &&
-              board[1].innerHTML === board[2].innerHTML &&
-              board[0].innerHTML.trim() !== ""
-            ) {
-              this.showWinner(game);
-            } else if (
-              board[3].innerHTML === board[4].innerHTML &&
-              board[4].innerHTML === board[5].innerHTML &&
-              board[3].innerHTML.trim() !== ""
-            ) {
-              this.showWinner(game);
-            } else if (
-              board[6].innerHTML === board[7].innerHTML &&
-              board[7].innerHTML === board[8].innerHTML &&
-              board[6].innerHTML.trim() !== ""
-            ) {
-              this.showWinner(game);
-            } else if (
-              board[0].innerHTML === board[3].innerHTML &&
-              board[3].innerHTML === board[6].innerHTML &&
-              board[0].innerHTML.trim() !== ""
-            ) {
-              this.showWinner(game);
-            } else if (
-              board[1].innerHTML === board[4].innerHTML &&
-              board[4].innerHTML === board[7].innerHTML &&
-              board[1].innerHTML.trim() !== ""
-            ) {
-              this.showWinner(game);
-            } else if (
-              board[2].innerHTML === board[5].innerHTML &&
-              board[5].innerHTML === board[8].innerHTML &&
-              board[2].innerHTML.trim() !== ""
-            ) {
-              this.showWinner(game);
-            } else if (
-              board[0].innerHTML === board[4].innerHTML &&
-              board[4].innerHTML === board[8].innerHTML &&
-              board[0].innerHTML.trim() !== ""
-            ) {
-              this.showWinner(game);
-            } else if (
-              board[2].innerHTML === board[4].innerHTML &&
-              board[4].innerHTML === board[6].innerHTML &&
-              board[2].innerHTML.trim() !== ""
-            ) {
-              this.showWinner(game);
-            } else {
-              game.playCount += 1;
-              if (game.playCount === 9) {
-                document.getElementById("reset").classList = "";
-              }
-            }
-          }
-        });
-      }
-    }
-  };
-
   // SHOW TABLE
   const showGameBoard = () => {
     document.querySelector(".table__header").classList = "table__header";
@@ -132,7 +59,79 @@ const gameBoardController = (function (playerController) {
 
   return {
     showBoard(game) {
-      boardWinner(game);
+      const board = document.getElementsByClassName("box");
+      document.getElementById("game-status").innerHTML = "status = running";
+
+      for (let i = 0; i < board.length; i += 1) {
+        if (game.playCount < 9) {
+          board[i].addEventListener("click", () => {
+            if (board[i].innerHTML.trim() === "" && game.status === "Running") {
+              board[i].innerHTML = game.currentPlay.symbol;
+              game.currentPlay =
+                game.currentPlay.symbol === "X" ? game.oPlayer : game.xPlayer;
+              document.getElementById("player").innerHTML =
+                game.currentPlay.name;
+
+              if (
+                board[0].innerHTML === board[1].innerHTML &&
+                board[1].innerHTML === board[2].innerHTML &&
+                board[0].innerHTML.trim() !== ""
+              ) {
+                showWinner(game);
+              } else if (
+                board[3].innerHTML === board[4].innerHTML &&
+                board[4].innerHTML === board[5].innerHTML &&
+                board[3].innerHTML.trim() !== ""
+              ) {
+                showWinner(game);
+              } else if (
+                board[6].innerHTML === board[7].innerHTML &&
+                board[7].innerHTML === board[8].innerHTML &&
+                board[6].innerHTML.trim() !== ""
+              ) {
+                showWinner(game);
+              } else if (
+                board[0].innerHTML === board[3].innerHTML &&
+                board[3].innerHTML === board[6].innerHTML &&
+                board[0].innerHTML.trim() !== ""
+              ) {
+                showWinner(game);
+              } else if (
+                board[1].innerHTML === board[4].innerHTML &&
+                board[4].innerHTML === board[7].innerHTML &&
+                board[1].innerHTML.trim() !== ""
+              ) {
+                showWinner(game);
+              } else if (
+                board[2].innerHTML === board[5].innerHTML &&
+                board[5].innerHTML === board[8].innerHTML &&
+                board[2].innerHTML.trim() !== ""
+              ) {
+                showWinner(game);
+              } else if (
+                board[0].innerHTML === board[4].innerHTML &&
+                board[4].innerHTML === board[8].innerHTML &&
+                board[0].innerHTML.trim() !== ""
+              ) {
+                showWinner(game);
+              } else if (
+                board[2].innerHTML === board[4].innerHTML &&
+                board[4].innerHTML === board[6].innerHTML &&
+                board[2].innerHTML.trim() !== ""
+              ) {
+                showWinner(game);
+              } else {
+                game.playCount += 1;
+                if (game.playCount === 9) {
+                  document.getElementById("game-status").innerHTML =
+                    "status = game withdraw";
+                  document.getElementById("reset").classList = "";
+                }
+              }
+            }
+          });
+        }
+      }
     },
 
     resetBoard() {
