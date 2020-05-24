@@ -57,6 +57,29 @@ const gameBoardController = (function (playerController) {
     document.querySelector(".game-create").classList = "game-create hide";
   };
 
+  // Check Winner Move
+  const checkWinningMove = (moves) => {
+    const winConditions = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [6, 4, 2],
+    ];
+
+    let returnVal = false;
+    winConditions.forEach((val) => {
+      if (val.every((win) => moves.indexOf(win) > -1)) {
+        console.log(moves);
+        returnVal = true;
+      }
+    });
+    return returnVal;
+  };
+
   return {
     showBoard(game) {
       const board = document.getElementsByClassName("box");
@@ -67,66 +90,31 @@ const gameBoardController = (function (playerController) {
           board[i].addEventListener("click", () => {
             if (board[i].innerHTML.trim() === "" && game.status === "Running") {
               board[i].innerHTML = game.currentPlay.symbol;
+
+              console.log("Trim", game);
+
+              if (game.currentPlay === game.xPlayer) {
+                game.xPlayer.moves.push(i);
+                if (checkWinningMove(game.xPlayer.moves)) {
+                  showWinner(game);
+                }
+              } else {
+                game.oPlayer.moves.push(i);
+                if (checkWinningMove(game.oPlayer.moves)) {
+                  showWinner(game);
+                }
+              }
+
+              game.playCount += 1;
               game.currentPlay =
                 game.currentPlay.symbol === "X" ? game.oPlayer : game.xPlayer;
               document.getElementById("player").innerHTML =
                 game.currentPlay.name;
 
-              if (
-                board[0].innerHTML === board[1].innerHTML &&
-                board[1].innerHTML === board[2].innerHTML &&
-                board[0].innerHTML.trim() !== ""
-              ) {
-                showWinner(game);
-              } else if (
-                board[3].innerHTML === board[4].innerHTML &&
-                board[4].innerHTML === board[5].innerHTML &&
-                board[3].innerHTML.trim() !== ""
-              ) {
-                showWinner(game);
-              } else if (
-                board[6].innerHTML === board[7].innerHTML &&
-                board[7].innerHTML === board[8].innerHTML &&
-                board[6].innerHTML.trim() !== ""
-              ) {
-                showWinner(game);
-              } else if (
-                board[0].innerHTML === board[3].innerHTML &&
-                board[3].innerHTML === board[6].innerHTML &&
-                board[0].innerHTML.trim() !== ""
-              ) {
-                showWinner(game);
-              } else if (
-                board[1].innerHTML === board[4].innerHTML &&
-                board[4].innerHTML === board[7].innerHTML &&
-                board[1].innerHTML.trim() !== ""
-              ) {
-                showWinner(game);
-              } else if (
-                board[2].innerHTML === board[5].innerHTML &&
-                board[5].innerHTML === board[8].innerHTML &&
-                board[2].innerHTML.trim() !== ""
-              ) {
-                showWinner(game);
-              } else if (
-                board[0].innerHTML === board[4].innerHTML &&
-                board[4].innerHTML === board[8].innerHTML &&
-                board[0].innerHTML.trim() !== ""
-              ) {
-                showWinner(game);
-              } else if (
-                board[2].innerHTML === board[4].innerHTML &&
-                board[4].innerHTML === board[6].innerHTML &&
-                board[2].innerHTML.trim() !== ""
-              ) {
-                showWinner(game);
-              } else {
-                game.playCount += 1;
-                if (game.playCount === 9) {
-                  document.getElementById("game-status").innerHTML =
-                    "status = game withdraw";
-                  document.getElementById("reset").classList = "";
-                }
+              if (game.playCount === 9) {
+                document.getElementById("game-status").innerHTML =
+                  "status = game withdraw";
+                document.getElementById("reset").classList = "";
               }
             }
           });
@@ -150,15 +138,18 @@ const gameBoardController = (function (playerController) {
       document.getElementById("message").style.display = "none";
 
       // HIDE FORM
-
       document.querySelector(".game-create").classList = "game-create";
+
+      location.reload();
     },
 
     startNewBoard(event) {
       event.preventDefault();
 
       const player1Name = document.getElementById("player-1").value;
+      document.getElementById("player-1").value = "";
       const player2Name = document.getElementById("player-2").value;
+      document.getElementById("player-2").value = "";
 
       const play1 = playerController.addPlayer(player1Name, "X");
       const play2 = playerController.addPlayer(player2Name, "O");
@@ -169,12 +160,8 @@ const gameBoardController = (function (playerController) {
       document.getElementById("player").innerHTML = play1.name;
       document.getElementById("player").value = play1.symbol;
 
-      const game = gameBoardController.newGame(play1, play2);
+      const game = new GameBoard(play1, play2);
       gameBoardController.showBoard(game);
-    },
-
-    newGame(xPlayer, oPlayer) {
-      return new GameBoard(xPlayer, oPlayer);
     },
   };
 })(playerController);
