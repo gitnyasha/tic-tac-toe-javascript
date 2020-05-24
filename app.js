@@ -1,4 +1,4 @@
-const playerController = (function () {
+const playerController = (() => {
   const Player = function (name, symbol) {
     this.name = name;
     this.moves = [];
@@ -24,7 +24,7 @@ const playerController = (function () {
   };
 })();
 
-const gameBoardController = (function (playerController) {
+const gameBoardController = ((playerController) => {
   const GameBoard = function (xPlayer, oPlayer) {
     this.xPlayer = xPlayer;
     this.oPlayer = oPlayer;
@@ -35,10 +35,9 @@ const gameBoardController = (function (playerController) {
   };
 
   const showWinner = function (game) {
-    document.getElementById("winner").innerHTML =
-      game.currentPlay.name === game.oPlayer.name
-        ? game.xPlayer.name
-        : game.oPlayer.name;
+    document.getElementById("winner").innerHTML = game.currentPlay.name === game.oPlayer.name
+      ? game.xPlayer.name
+      : game.oPlayer.name;
 
     document.getElementById("message").style.display = "block";
     document.getElementById("game-status").innerHTML = "status = game over";
@@ -106,14 +105,11 @@ const gameBoardController = (function (playerController) {
               }
 
               game.playCount += 1;
-              game.currentPlay =
-                game.currentPlay.symbol === "X" ? game.oPlayer : game.xPlayer;
-              document.getElementById("player").innerHTML =
-                game.currentPlay.name;
+              game.currentPlay = game.currentPlay.symbol === "X" ? game.oPlayer : game.xPlayer;
+              document.getElementById("player").innerHTML = game.currentPlay.name;
 
               if (game.playCount === 9) {
-                document.getElementById("game-status").innerHTML =
-                  "status = game withdraw";
+                document.getElementById("game-status").innerHTML = "status = game withdraw";
                 document.getElementById("reset").classList = "";
               }
             }
@@ -140,7 +136,7 @@ const gameBoardController = (function (playerController) {
       // HIDE FORM
       document.querySelector(".game-create").classList = "game-create";
 
-      location.reload();
+      window.location.reload();
     },
 
     startNewBoard(event) {
@@ -166,7 +162,7 @@ const gameBoardController = (function (playerController) {
   };
 })(playerController);
 
-const globalController = (function (gameBoardController) {
+const globalController = ((gameBoardController) => {
   // controller that links other modules
 
   const setupEventListener = () => {
