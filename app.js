@@ -1,11 +1,14 @@
 const playerController = (() => {
-  const Player = function (name, symbol) {
-    this.name = name;
-    this.moves = [];
-    this.symbol = symbol;
-    this.winner = false;
-    this.active = false;
-  };
+  class Player {
+    constructor(name, symbol) {
+      this.name = name;
+      this.moves = [];
+      this.symbol = symbol;
+      this.winner = false;
+      this.active = false;
+    }
+  }
+
   return {
     addPlayer(name, symbol) {
       return new Player(name, symbol);
@@ -25,16 +28,18 @@ const playerController = (() => {
 })();
 
 const gameBoardController = ((playerController) => {
-  const GameBoard = function (xPlayer, oPlayer) {
-    this.xPlayer = xPlayer;
-    this.oPlayer = oPlayer;
-    this.status = "Running";
-    this.currentPlay = xPlayer;
-    this.winner = null;
-    this.playCount = 0;
-  };
+  class GameBoard {
+    constructor(xPlayer, oPlayer) {
+      this.xPlayer = xPlayer;
+      this.oPlayer = oPlayer;
+      this.status = "Running";
+      this.currentPlay = xPlayer;
+      this.winner = null;
+      this.playCount = 0;
+    }
+  }
 
-  const showWinner = function (game) {
+  const showWinner = (game) => {
     document.getElementById("winner").innerHTML = game.currentPlay.name === game.oPlayer.name
       ? game.xPlayer.name
       : game.oPlayer.name;
@@ -72,7 +77,6 @@ const gameBoardController = ((playerController) => {
     let returnVal = false;
     winConditions.forEach((val) => {
       if (val.every((win) => moves.indexOf(win) > -1)) {
-        console.log(moves);
         returnVal = true;
       }
     });
@@ -89,8 +93,6 @@ const gameBoardController = ((playerController) => {
           board[i].addEventListener("click", () => {
             if (board[i].innerHTML.trim() === "" && game.status === "Running") {
               board[i].innerHTML = game.currentPlay.symbol;
-
-              console.log("Trim", game);
 
               if (game.currentPlay === game.xPlayer) {
                 game.xPlayer.moves.push(i);
