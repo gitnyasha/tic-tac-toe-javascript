@@ -40,12 +40,13 @@ const gameBoardController = ((playerController) => {
   }
 
   const showWinner = (game) => {
-    document.getElementById("winner").innerHTML = game.currentPlay.name === game.oPlayer.name
-      ? game.xPlayer.name
-      : game.oPlayer.name;
-
+    document.getElementById("winner").innerHTML =
+      game.currentPlay.name === game.xPlayer.name
+        ? game.xPlayer.name
+        : game.oPlayer.name;
     document.getElementById("message").style.display = "block";
-    document.getElementById("game-status").innerHTML = "status = game over";
+    document.getElementById("hideThis").style.display = "none";
+    document.getElementById("game-status").innerHTML = "game over";
     game.status = "Game Over";
     document.getElementById("reset").classList = "";
   };
@@ -107,12 +108,15 @@ const gameBoardController = ((playerController) => {
               }
 
               game.playCount += 1;
-              game.currentPlay = game.currentPlay.symbol === "X" ? game.oPlayer : game.xPlayer;
-              document.getElementById("player").innerHTML = game.currentPlay.name;
+              game.currentPlay =
+                game.currentPlay.symbol === "X" ? game.oPlayer : game.xPlayer;
+              document.getElementById("player").innerHTML =
+                game.currentPlay.name;
 
               if (game.playCount === 9) {
-                document.getElementById("game-status").innerHTML = "status = game withdraw";
+                document.getElementById("game-status").innerHTML = "Its a draw";
                 document.getElementById("reset").classList = "";
+                document.getElementById("hideThis").style.display = "none";
               }
             }
           });
