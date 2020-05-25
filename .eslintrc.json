@@ -13,14 +13,6 @@
     "no-shadow": "off",
     "no-param-reassign": "off",
     "eol-last": "off",
-    "arrow-parens": "off",
-    "max-classes-per-file": ["error", 2],
-    "quotes": [
-      2,
-      "double",
-      {
-        "avoidEscape": true
-      }
-    ]
+    "arrow-parens": "off"
   }
 }
