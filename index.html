@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Tic Tac Toe</title>
+  </head>
+  <body>
+    <div class="container-out">
+      <div class="container-in">
+        <div class="table-container">
+          <div class="table__header hide">
+            <p id="hideThis">
+              Player : <span id="player">()</span>; Now your turn !
+            </p>
+            <h4 id="game-status">status = running</h4>
+          </div>
+          <table class="hide" id="table">
+            <tr>
+              <td><div class="box"></div></td>
+              <td><div class="box"></div></td>
+              <td><div class="box"></div></td>
+            </tr>
+            <tr>
+              <td><div class="box"></div></td>
+              <td><div class="box"></div></td>
+              <td><div class="box"></div></td>
+            </tr>
+            <tr>
+              <td><div class="box"></div></td>
+              <td><div class="box"></div></td>
+              <td><div class="box"></div></td>
+            </tr>
+          </table>
+          <form class="game-create">
+            <input type="text" id="player-1" placeholder="player 1" required />
+            <input type="text" id="player-2" placeholder="player 2" required />
+            <button type="submit" class="btn btn-create">Game Start</button>
+          </form>
+          <h2 id="message">Player <span id="winner"></span> Wins</h2>
+          <div>
+            <button id="reset" class="hide">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "tic-tac-toe-javascript",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">  <a href=\"https://github.com/konyan/ruby-job-scrapper\">     <img src=\"./img/tic-tat-toe.png\" alt=\"Logo\" width=\"680\" height=\"auto\">   </a>   <h3 align=\"center\">Tic Tac Toe Game Project</h3>",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitnyasha/tic-tac-toe-javascript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitnyasha/tic-tac-toe-javascript/issues"
+  },
+  "homepage": "https://github.com/gitnyasha/tic-tac-toe-javascript#readme",
+  "devDependencies": {
+    "eslint": "^7.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "prettier": "^2.0.5"
+  }
+}

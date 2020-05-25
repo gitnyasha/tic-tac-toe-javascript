@@ -1,8 +1,20 @@
-# Library
+<p align="center">
+ <a href="https://github.com/konyan/ruby-job-scrapper">
+    <img src="./img/tic-tat-toe.png" alt="Logo" width="680" height="auto">
+  </a>
+  <h3 align="center">Tic Tac Toe Game Project</h3>
 
-> A basic tic tac toe.
+  <p align="center">
+    Myanmar Food & Restaurant Template Design and Practice Tab Logic with Javascript DOM.
+    <br />
+    <br />
+    <a href="https://hungry-payne-9abdca.netlify.app/">View Demo</a>
+  </p>
+</p>
 
-The porpuse of this project was to build an interface for a library using an array of objects as storage.
+# Tic-Tac-Toe Porject
+
+> A basic tic tac toe game build with html css and javascript using modules.
 
 ## Built With
 
@@ -12,7 +24,7 @@ The porpuse of this project was to build an interface for a library using an arr
 
 ## Live Demo
 
-[Live]()
+[Live](https://hungry-payne-9abdca.netlify.app/)
 
 ## Getting Started
 
@@ -22,20 +34,21 @@ To get a local copy up and running follow these simple example steps.
 
 Download the project
 
-    $ git clone
+    $ git clone https://github.com/gitnyasha/tic-tac-toe-javascript.git
 
 ### Usage
 
+We’re making a Tic Tac Toe game you can play in your browser!
+
 - Open **index.html** file with your favorite browser. It's inside the project's root directory.
-- That's it. Start saving your books.
 
 ## Authors
 
-👤 \*\*\*\*
+👤 **Ko Nyan**
 
-- Github: [](https://github.com/)
-- Twitter: [](https://twitter.com/)
-- Linkedin: [](https://www.linkedin.com/)
+- Github: [konyan](https://github.com/konyan)
+- Twitter: [@konyan](https://twitter.com/devkonyan)
+- Linkedin: [nyanlintun](https://www.linkedin.com/in/nyanlintun/)
 
 👤 **Marshall Nyasha Chikari**
 
@@ -46,10 +59,6 @@ Download the project
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Thanks to [Twitter Bootstrap Project](https://getbootstrap.com/2.0.2/)
 
 ## 📝 License
 
