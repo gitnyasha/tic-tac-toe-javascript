@@ -17,7 +17,7 @@ const playerController = (() => {
       this.moves.push(move);
     },
 
-    addWinener() {
+    addWinner() {
       this.winner = true;
     },
 

@@ -118,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pla
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst playerController = (() => {\n  class Player {\n    constructor(name, symbol) {\n      this.name = name;\n      this.moves = [];\n      this.symbol = symbol;\n      this.winner = false;\n      this.active = false;\n    }\n  }\n\n  return {\n    addPlayer(name, symbol) {\n      return new Player(name, symbol);\n    },\n    addMove(move) {\n      this.moves.push(move);\n    },\n\n    addWinener() {\n      this.winner = true;\n    },\n\n    activePlayer(active) {\n      this.active = active;\n    },\n  };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (playerController);\n\n\n//# sourceURL=webpack:///./src/playerController.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nconst playerController = (() => {\n  class Player {\n    constructor(name, symbol) {\n      this.name = name;\n      this.moves = [];\n      this.symbol = symbol;\n      this.winner = false;\n      this.active = false;\n    }\n  }\n\n  return {\n    addPlayer(name, symbol) {\n      return new Player(name, symbol);\n    },\n    addMove(move) {\n      this.moves.push(move);\n    },\n\n    addWinner() {\n      this.winner = true;\n    },\n\n    activePlayer(active) {\n      this.active = active;\n    },\n  };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (playerController);\n\n\n//# sourceURL=webpack:///./src/playerController.js?");
 
 /***/ })
 
