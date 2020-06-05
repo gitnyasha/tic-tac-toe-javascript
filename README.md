@@ -1,17 +1,3 @@
-<p align="center">
- <a href="https://github.com/konyan/ruby-job-scrapper">
-    <img src="./img/tic-tat-toe.png" alt="Logo" width="680" height="auto">
-  </a>
-  <h3 align="center">Tic Tac Toe Game Project</h3>
-
-  <p align="center">
-    Myanmar Food & Restaurant Template Design and Practice Tab Logic with Javascript DOM.
-    <br />
-    <br />
-    <a href="https://hungry-payne-9abdca.netlify.app/">View Demo</a>
-  </p>
-</p>
-
 # Tic-Tac-Toe Porject
 
 > A basic tic tac toe game build with html css and javascript using modules.
