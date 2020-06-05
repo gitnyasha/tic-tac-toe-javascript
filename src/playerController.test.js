@@ -6,17 +6,16 @@ test('Player has a name', () => {
   expect(player.name).toBe('Marshall');
 });
 
-test('Player 1 turn to move', () => {
-  const addmove = playerController.addMove('O');
-  expect(addmove.move).toBe(true);
+it('Adds mark to box', () => {
+  const move = new playerController.addMove();
+  move.addMove();
+  expect(move.addMarker('move')).toEqual(['move']);
 });
 
 test('Marshall is the current player', () => {
-  const current = playerController.activePlayer('Marshall');
-  expect(current.active).toBe('Marshall');
+  expect(activePlayer()).toBe(true);
 });
 
 test('Winner is player X', () => {
-  const won = playerController.addWinner('Marshall');
-  expect(won.winner).toBe('Marshall');
+  expect(addWinner()).toBeTruthy();
 });
