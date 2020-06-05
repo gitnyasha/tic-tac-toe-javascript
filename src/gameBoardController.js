@@ -13,14 +13,21 @@ const gameBoardController = ((playerController) => {
   }
 
   const showWinner = (game) => {
+    game.status = 'Game Over';
+    game.winner =
+      game.currentPlay.name === game.xPlayer.name ? game.xPlayer : game.oPlayer;
+  };
+
+  const showWinnerDOM = (game) => {
     document.getElementById('winner').innerHTML =
       game.currentPlay.name === game.xPlayer.name
         ? game.xPlayer.name
         : game.oPlayer.name;
+
     document.getElementById('message').style.display = 'block';
     document.getElementById('hideThis').style.display = 'none';
     document.getElementById('game-status').innerHTML = 'game over';
-    game.status = 'Game Over';
+
     document.getElementById('reset').classList = '';
   };
 
@@ -58,6 +65,13 @@ const gameBoardController = ((playerController) => {
   };
 
   return {
+    newGameBoard(player1, player2) {
+      return new GameBoard(player1, player2);
+    },
+
+    showWinner,
+    checkWinningMove,
+
     showBoard(game) {
       const board = document.getElementsByClassName('box');
       document.getElementById('game-status').innerHTML = 'status = running';
@@ -71,11 +85,13 @@ const gameBoardController = ((playerController) => {
               if (game.currentPlay === game.xPlayer) {
                 game.xPlayer.moves.push(i);
                 if (checkWinningMove(game.xPlayer.moves)) {
+                  showWinnerDOM(game);
                   showWinner(game);
                 }
               } else {
                 game.oPlayer.moves.push(i);
                 if (checkWinningMove(game.oPlayer.moves)) {
+                  showWinnerDOM(game);
                   showWinner(game);
                 }
               }
