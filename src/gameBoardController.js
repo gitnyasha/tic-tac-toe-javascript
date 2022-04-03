@@ -1,31 +1,4 @@
-const playerController = (() => {
-  class Player {
-    constructor(name, symbol) {
-      this.name = name;
-      this.moves = [];
-      this.symbol = symbol;
-      this.winner = false;
-      this.active = false;
-    }
-  }
-
-  return {
-    addPlayer(name, symbol) {
-      return new Player(name, symbol);
-    },
-    addMove(move) {
-      this.moves.push(move);
-    },
-
-    addWinener() {
-      this.winner = true;
-    },
-
-    activePlayer(active) {
-      this.active = active;
-    },
-  };
-})();
+import playerController from './playerController';
 
 const gameBoardController = ((playerController) => {
   class GameBoard {
@@ -40,11 +13,21 @@ const gameBoardController = ((playerController) => {
   }
 
   const showWinner = (game) => {
-    document.getElementById('winner').innerHTML = game.currentPlay.name === game.xPlayer.name ? game.xPlayer.name : game.oPlayer.name;
+    game.status = 'Game Over';
+    game.winner =
+      game.currentPlay.name === game.xPlayer.name ? game.xPlayer : game.oPlayer;
+  };
+
+  const showWinnerDOM = (game) => {
+    document.getElementById('winner').innerHTML =
+      game.currentPlay.name === game.xPlayer.name
+        ? game.xPlayer.name
+        : game.oPlayer.name;
+
     document.getElementById('message').style.display = 'block';
     document.getElementById('hideThis').style.display = 'none';
     document.getElementById('game-status').innerHTML = 'game over';
-    game.status = 'Game Over';
+
     document.getElementById('reset').classList = '';
   };
 
@@ -82,6 +65,13 @@ const gameBoardController = ((playerController) => {
   };
 
   return {
+    newGameBoard(player1, player2) {
+      return new GameBoard(player1, player2);
+    },
+
+    showWinner,
+    checkWinningMove,
+
     showBoard(game) {
       const board = document.getElementsByClassName('box');
       document.getElementById('game-status').innerHTML = 'status = running';
@@ -95,18 +85,22 @@ const gameBoardController = ((playerController) => {
               if (game.currentPlay === game.xPlayer) {
                 game.xPlayer.moves.push(i);
                 if (checkWinningMove(game.xPlayer.moves)) {
+                  showWinnerDOM(game);
                   showWinner(game);
                 }
               } else {
                 game.oPlayer.moves.push(i);
                 if (checkWinningMove(game.oPlayer.moves)) {
+                  showWinnerDOM(game);
                   showWinner(game);
                 }
               }
 
               game.playCount += 1;
-              game.currentPlay = game.currentPlay.symbol === 'X' ? game.oPlayer : game.xPlayer;
-              document.getElementById('player').innerHTML = game.currentPlay.name;
+              game.currentPlay =
+                game.currentPlay.symbol === 'X' ? game.oPlayer : game.xPlayer;
+              document.getElementById('player').innerHTML =
+                game.currentPlay.name;
               if (game.playCount === 9) {
                 document.getElementById('game-status').innerHTML = 'Its a draw';
                 document.getElementById('reset').classList = '';
@@ -162,24 +156,4 @@ const gameBoardController = ((playerController) => {
   };
 })(playerController);
 
-const globalController = ((gameBoardController) => {
-  // controller that links other modules
-
-  const setupEventListener = () => {
-    document
-      .getElementById('reset')
-      .addEventListener('click', gameBoardController.resetBoard);
-
-    document
-      .querySelector('.game-create')
-      .addEventListener('submit', gameBoardController.startNewBoard);
-  };
-
-  return {
-    init() {
-      setupEventListener();
-    },
-  };
-})(gameBoardController);
-
-globalController.init();
+export default gameBoardController;
